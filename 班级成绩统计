@@ -1,0 +1,125 @@
+#include<stdio.h>
+#include<stdlib.h>
+double jpa(int a){
+	if(a<60)
+		return 0;
+	else
+		return 2+(a-60)*2;}
+int max(int a[30]){
+	int m,n,t;
+	for(m=0;m<30;m++){
+		for(n=m;n<30;n++){
+			if(a[m]<a[n]){
+				t=a[m];a[m]=a[n];a[n]=t;}
+		}}
+	return a[0];}
+int min(int a[30]){
+	int m,n,t;
+	for(m=0;m<30;m++){
+		for(n=m;n<30;n++){
+			if(a[m]<a[n]){
+				t=a[m];a[m]=a[n];a[n]=t;}
+		}}
+	return a[29];}
+int main()
+{
+	printf("学号 姓名 高等数学 离散数学 英语 程序设计\n");
+	char *name2[30];
+	int m,n,j,i;
+	int num[30],a[30],b[30],c[30],d[30],mark=80,num1,a1,b1,c1,d1,t[30];
+	char name[30][15],name1[15];
+	double e[30],e1,f[30],f1;
+	for(m=0;m<30;m++){
+		scanf("%d %s %d %d %d %d",&num[m],&name[m],&a[m],&b[m],&c[m],&d[m]);
+		scanf("\n");
+		e1=5*jpa(a[m])+4*jpa(b[m])+6*jpa(c[m])+3*jpa(d[m]);
+		e[m]=e1/18;
+		f[m]=mark*0.25+(50+e[m]*5)*0.75;}
+	for(m=0;m<30;m++){
+		for(n=m;n<30;n++){
+			if(f[m]<f[n]){
+				f1=f[m];f[m]=f[n];f[n]=f1;
+				a1=a[m];a[m]=a[n];a[n]=a1;
+				b1=b[m];b[m]=b[n];b[n]=b1;
+				c1=c[m];c[m]=c[n];c[n]=c1;
+				d1=d[m];d[m]=d[n];d[n]=d1;
+				e1=e[m];e[m]=e[n];e[n]=e1;
+				num1=num[m];num[m]=num[n];num[n]=num1;
+				for(j=0;j<15;j++){
+					name1[j]=name[m][j];}
+				for(i=0;i<15;i++){
+					name[m][i]=name[n][i];}
+				for(j=0;j<15;j++){
+					name[n][j]=name1[j];}}}}
+	printf("学号 姓名 高等数学 离散数学 英语 程序设计 绩点 综测\n");
+	for(m=0;m<30;m++){
+		printf("%d %s %d %d %d %d %f %f\n",num[m],name[m],a[m],b[m],c[m],d[m],e[m],f[m]);}
+	printf("\n");
+	for(m=0;m<30;m++){
+		t[m]=a[m];}
+	printf("高等数学：最高分：%d,",max(t));
+	printf("获得者：");
+	a1=max(t);
+	for(m=0;m<30;m++){
+		if(a[m]==a1)
+			printf("%s ",name[m]);
+		else
+			continue;}
+	printf("最低分：%d,获得者：",min(t));
+	a1=min(t);
+	for(m=0;m<30;m++){
+		if(a[m]==a1)
+			printf("%s ",name[m]);}
+	printf(";\n");
+	for(m=0;m<30;m++){
+		t[m]=b[m];}
+	printf("离散数学：最高分：%d,获得者：",max(t));
+	b1=max(t);
+	for(m=0;m<30;m++){
+		if(b[m]==b1)
+			printf("%s ",name[m]);}
+	printf("最低分：%d,获得者：",min(t));
+	b1=min(t);
+	for(m=0;m<30;m++){
+		if(b[m]==b1)
+			printf("%s ",name[m]);}
+	printf(";\n");
+	for(m=0;m<30;m++){
+		t[m]=c[m];};
+	printf("英语：最高分：%d,获得者：",max(t));
+	c1=max(t);
+	for(m=0;m<30;m++){
+		if(c[m]==c1)
+			printf("%s ",name[m]);}
+	printf("最低分：%d,获得者：",min(t));
+	c1=min(t);
+	for(m=0;m<30;m++){
+		if(c[m]==c1)
+			printf("%s ",name[m]);}
+	printf(";\n");
+	for(m=0;m<30;m++){
+		t[m]=d[m];}
+	printf("程序设计：最高分：%d,获得者：",max(t));
+	d1=max(t);
+	for(m=0;m<30;m++){
+		if(d[m]==d1)
+			printf("%s ",name[m]);}
+	printf("最低分：%d,获得者：",min(t));
+	d1=min(t);
+	for(m=0;m<30;m++){
+		if(d[m]==d1)
+			printf("%s ",name[m]);}
+	printf(";\n");
+	printf("一等奖：%d %s\n",num[0],name[0]);
+	printf("二等奖：%d %s	%d %s	%d %s\n",num[1],name[1],num[2],name[2],num[3],name[3]);
+	if(a[4]>59&&b[4]>59&&c[4]>59&&d[4]>59&&e[4]>5.99){
+		printf("三等奖：%d %s",num[4],name[4]);
+		for(n=5;n<10;n++){
+			if(a[m]>59&&b[m]>59&&c[m]>59&&d[m]>59&&e[m]>5.99)
+				printf("	%d %s",num[m],name[m]);
+			else
+				break;
+		}}
+	system("pause");
+	return 0;
+}
